@@ -22,7 +22,7 @@ export default class UsersRepository implements IUsersRepository{
 
         await this.ormRepository.save(user);
 
-        return user;
+        return await this.ormRepository.findOne(user.id);
     }
 
     public async listAll(){
@@ -34,8 +34,8 @@ export default class UsersRepository implements IUsersRepository{
 
     public async findByEmail(email: string): Promise<User | undefined>{
 
-        const findByEmail = await this.ormRepository.findOne({ where: { email }});
-
+        const findByEmail = await this.ormRepository.findOne({ where: { email }, select: ['id','name','email', 'password']});
+        
         return findByEmail;
     }
 
@@ -57,5 +57,13 @@ export default class UsersRepository implements IUsersRepository{
     public async save(user: User): Promise<User>{
 
         return await this.ormRepository.save(user);
+    }
+
+
+    public async delete(id: string): Promise<object>{
+
+        await this.ormRepository.delete(id);
+
+        return {message: 'deleted'};
     }
 }

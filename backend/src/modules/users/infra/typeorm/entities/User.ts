@@ -1,5 +1,4 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-
 @Entity('users')
 class User{
 
@@ -15,7 +14,7 @@ class User{
     @Column()
     email: string;
 
-    @Column()
+    @Column({ select: false})
     password: string;
 
     @Column()

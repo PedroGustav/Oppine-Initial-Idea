@@ -40,14 +40,16 @@ export class CreateFollows1625104376043 implements MigrationInterface {
             name: 'follows_user_send',
             columnNames: ['id_user_send'],
             referencedColumnNames: ['id'],
-            referencedTableName: 'users'
+            referencedTableName: 'users',
+            onDelete: 'CASCADE'
         }))
 
         await queryRunner.createForeignKey('follows', new TableForeignKey({
             name: 'follows_user_receive',
             columnNames: ['id_user_receive'],
             referencedColumnNames: ['id'],
-            referencedTableName: 'users'
+            referencedTableName: 'users',
+            onDelete: 'CASCADE'
         }))
     }
 

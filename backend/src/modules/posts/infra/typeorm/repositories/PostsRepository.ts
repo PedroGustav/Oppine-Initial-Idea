@@ -28,10 +28,17 @@ export default class PostsRepository implements IPostsRepository{
         return await this.ormRepository.save(post);
     }
 
-    public async listById(id_user: string): Promise<Post[]>{
+    public async listByUserId(id_user: string): Promise<Post[]>{
 
-        const posts = await this.ormRepository.find({where: { id_user}});
+        const posts = await this.ormRepository.find({where: { id_user}, select: ['id','id_user','description', 'image', 'created_at', 'updated_at']});
 
         return posts;
+    }
+
+    public async findById(id: string): Promise<Post | undefined>{
+
+        const post = await this.ormRepository.findOne(id);
+
+        return post;
     }
 }

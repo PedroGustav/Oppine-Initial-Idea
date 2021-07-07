@@ -6,12 +6,12 @@ export default class UserPublicationsController{
 
     public async index(request: Request, response: Response): Promise<Response>{
 
-        const id_user = request.user.id;
+        const {id_user} = request.body;
 
         const postsRepository = new PostsRepository();
         const userPublications = new ListUserPublicationsService(postsRepository);
 
-        const posts = await  userPublications.execute(id_user);
+        const posts = await userPublications.execute(id_user);
 
         return response.json(posts);
     }

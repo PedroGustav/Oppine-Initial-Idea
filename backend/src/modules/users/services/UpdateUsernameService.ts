@@ -26,7 +26,7 @@ export default class UpdateUsernameService{
             throw new AppError('Insira um username válido.', 400);
         } 
 
-        const regex = /\.$|\s|\W/g;
+        const regex = /\.$|\s|@!#$%^&*()\\/g;
         const testUsernameIsValid = regex.test(username);
         
         if(testUsernameIsValid){

@@ -28,7 +28,7 @@ export default class CreateFollowService{
 
         if(!user){
 
-            throw new AppError('O Id do usuário que está recebendo a solicitação de amizade é inválido', 404);
+            throw new AppError('Não existe nenhum usuário com este username.', 404);
         }
 
         

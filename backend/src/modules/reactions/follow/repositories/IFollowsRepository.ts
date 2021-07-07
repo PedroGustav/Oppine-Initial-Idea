@@ -6,4 +6,5 @@ export default interface IFollowsRepository{
     listByUserIdSend(id_user_send: string): Promise<Follow[]>;
     listByUserIdReceive(id_user_receive: string): Promise<Follow[]>;
     findById(id: string): Promise<Follow | undefined>;
+    delete(id: string): Promise<object>;
 }

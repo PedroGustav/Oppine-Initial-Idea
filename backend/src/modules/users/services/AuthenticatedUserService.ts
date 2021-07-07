@@ -11,9 +11,10 @@ interface Request{
 export default class AuthenticadedUserService{
     constructor( private usersRepository:  IUsersRepository){}
 
+    
     public async execute( {email, password}: Request){
 
-        
+           
 
 
         const user = await this.usersRepository.findByEmail(email);

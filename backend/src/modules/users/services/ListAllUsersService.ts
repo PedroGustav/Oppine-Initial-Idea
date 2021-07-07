@@ -1,4 +1,3 @@
-
 import IUsersRepository from '../repositories/IUsersRepository';
 export default class ListAllUsersService{
 

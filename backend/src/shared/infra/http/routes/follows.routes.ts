@@ -9,3 +9,5 @@ export const followsRoutes = Router();
 followsRoutes.post('/', ensureAuthenticated, followsController.create);
 
 followsRoutes.get('/', ensureAuthenticated, followsController.index);
+
+followsRoutes.delete('/', ensureAuthenticated, followsController.delete);

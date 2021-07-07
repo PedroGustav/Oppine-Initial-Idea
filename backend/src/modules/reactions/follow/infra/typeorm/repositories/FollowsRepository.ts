@@ -45,4 +45,11 @@ export default class FollowsRepository implements IFollowsRepository{
         return follows;
 
     }
+
+    public async delete(id: string): Promise<object>{
+
+        const response = this.ormRepository.delete(id);
+        
+        return { message: response};
+    }
 }
