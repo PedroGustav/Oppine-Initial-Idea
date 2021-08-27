@@ -26,7 +26,7 @@
 
 
 
-<h3>Este projeto foi desenvolvido no intúito de treinar alguns conceitos utilizados no desenvolvimento web (front-end e back end) além de servir para agregar no porifólio.</h3>
+<h3>Este projeto foi desenvolvido no intuito de treinar alguns conceitos utilizados no desenvolvimento web (front-end e back end) além de servir para agregar no porifólio.</h3>
 
 </br>
 
