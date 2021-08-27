@@ -47,9 +47,10 @@ Caso queira baixar o projeto em sua máquina e testá-lo, basta copiar o reposit
 ## ⛏️  Ferramentas utilizadas <a name = "built_using"></a>
 
 - [PostgreSQL](https://www.postgresql.org) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [ReactJs](https://reactjs.org) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
+- [Express](https://expressjs.com/) - Framework para o servidor
+- [ReactJs](https://reactjs.org) - Framework Web
+- [NodeJs](https://nodejs.org/en/) - Ambiente do servidor
+- [Docker](https://www.docker.com) - Criação de Container para o banco de dados
 
 </br>
 
@@ -101,7 +102,17 @@ Caso queira baixar o projeto em sua máquina e testá-lo, basta copiar o reposit
 
 </br>
 
+</br>
 
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+### <p align="center">Críticas e sugestões são sempre bem vindas para um desenvolvedor em desenvolvimento :)</p>
 
 
 
