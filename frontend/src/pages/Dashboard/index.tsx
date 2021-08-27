@@ -24,7 +24,7 @@ export const Dashboard: React.FC = () => {
                 onClickClose={CloseModal}
                 />
 
-                <Feed/>
+                <Feed/> 
                 
                 <RightSection>
                     <FriendsRequest/>

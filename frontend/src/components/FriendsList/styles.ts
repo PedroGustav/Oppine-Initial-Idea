@@ -88,9 +88,9 @@ export const Container = styled.div`
         }
 
         p{
-            color: var(--gray200);
+            color: var(--gray500);
             align-self: center;
-            font-weight: 200;
+            font-weight: 400;
         }
     }
 

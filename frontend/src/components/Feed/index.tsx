@@ -48,7 +48,7 @@ export const Feed: React.FC = () => {
                         </button>
                     </div>
                 </Post>
-            )): <Loading></Loading>}
+            )): <>a</>}
             
         </Container>
     );

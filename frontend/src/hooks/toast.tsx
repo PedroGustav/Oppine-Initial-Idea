@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useContext, useState } from 'react';
 import { ToastContainer } from '../components/ToastContainer';
-import { uuid } from 'uuidv4';
+import { v4 } from 'uuid';
 interface ToastContextData{
     addToast(message: Omit<ToastMessage, 'id'>): void;
     removeToast(id: string): void;
@@ -22,7 +22,7 @@ export const ToastProvider: React.FC = ({children}) => {
 
 
     const addToast = useCallback(({title, type, description}: Omit< ToastMessage, 'id'>) => {
-        const id = uuid();
+        const id = v4();
         
         const toast = {
             id,
