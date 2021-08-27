@@ -23,11 +23,12 @@ interface LoginData{
 
 export function LoginPage(){
     const formRef = useRef<FormHandles>(null);
-    
     const { signIn } = useAuth();
     const { addToast } = useToast();
+    localStorage.removeItem('@Oppine:token');
+    localStorage.removeItem('@Oppine:user');
     
-    const handleSubmit = useCallback(async (data: LoginData) => {
+    const handleSubmit = useCallback(async (datas: LoginData) => {
         
         formRef.current?.setErrors({});
 
@@ -40,15 +41,15 @@ export function LoginPage(){
                     .required('Digite uma senha.'),
             })
 
-            await schema.validate(data, {
+            await schema.validate(datas, {
                 abortEarly: false
             });
 
             await signIn({
-                email: data.email,
-                password: data.password
+                email: datas.email,
+                password: datas.password
             });
-
+                
             
             
         } catch (err) {
@@ -65,7 +66,7 @@ export function LoginPage(){
             }
             
         }
-    },[signIn])
+    },[signIn, addToast])
 
 
     return(
@@ -85,7 +86,7 @@ export function LoginPage(){
                     <h2>Que prazer ver você de novo!</h2>
                     <Input name='email' placeholder='E-mail:'/>
                     <PasswordInput name='password' haveRecuperation='true' placeholder='Senha:'/>
-                    <a href="#">Esqueci minha senha</a>
+                    <Link to={''}>Esqueci minha senha</Link>
                     <Button type='submit' >Fazer Login</Button>
                </Form>
                 <img src={People1Img} alt="Man on computer" />

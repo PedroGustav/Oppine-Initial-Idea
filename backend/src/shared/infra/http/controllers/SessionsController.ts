@@ -19,8 +19,10 @@ export default class SessionsController{
             user:{
                 id: user.id,
                 name: user.name,
-                email: user.email,
                 username: user.username,
+                email: user.email,
+                avatar: user.avatar,
+                created_at: user.created_at
             },
             token,
         });

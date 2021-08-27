@@ -1,4 +1,10 @@
-import { createGlobalStyle }from 'styled-components';
+import { createGlobalStyle, keyframes }from 'styled-components';
+
+const FadeInAnimation = keyframes`
+
+    from{ opacity: 0;}
+    to{ opacity: 1;}
+`;
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -68,7 +74,35 @@ font-family: 'Sanchez', serif;
 
 
     
+.react-modal-overlay{
+        background: rgba(0, 0, 0, 0.5) ;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
 
+    .react-modal-content {
+        animation: ${FadeInAnimation} 0.3s;
+        max-width: 700px;
+        position: relative;
+        border-radius: 0.24rem;
+        outline: none;
+    }
+
+    .delete-modal-content {
+        animation: ${FadeInAnimation} 0.3s;
+        width: 494px;
+        background: var(--white);
+        position: relative;
+        border-radius: 0.24rem;
+        outline: none;
+    }
 
 `;

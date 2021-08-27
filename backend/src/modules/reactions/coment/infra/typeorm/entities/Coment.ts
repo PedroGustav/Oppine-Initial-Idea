@@ -25,7 +25,7 @@ class Coment{
     @Column()
     coment: string;
 
-    @CreateDateColumn()
+    @CreateDateColumn({ type: 'timestamptz'})
     created_at: Date;
 }
 

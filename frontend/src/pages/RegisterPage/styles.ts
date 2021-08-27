@@ -41,7 +41,7 @@ export const Main = styled.main`
     img{
         left: -3.5rem;
         width: 50rem;
-        height: 38.8rem;
+        height: 38.6rem;
         position: absolute;
         z-index: -1;
     }

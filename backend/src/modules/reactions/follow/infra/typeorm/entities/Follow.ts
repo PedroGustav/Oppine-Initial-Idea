@@ -16,7 +16,7 @@ class Follow{
 
     @OneToOne(() => User)
     @JoinColumn({name: 'id_user_receive'})
-    user_receive: string;
+    user_receive: User;
 
     @Column()
     id_user_receive: string;
@@ -24,7 +24,7 @@ class Follow{
     @Column('boolean')
     state: boolean;
 
-    @CreateDateColumn()
+    @CreateDateColumn({ type: 'timestamptz'})
     created_at: Date;
 }
 

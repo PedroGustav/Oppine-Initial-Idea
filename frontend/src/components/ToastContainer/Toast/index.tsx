@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { ToastMessage, useToast } from '../../../hooks/toast';
 import { Container } from './styles';
 import { FiAlertCircle, FiCheckCircle, FiInfo, FiXCircle } from 'react-icons/fi';
-import { title } from 'process';
 
 interface ToastProps{
     message: ToastMessage;
@@ -26,7 +25,7 @@ export const Toast: React.FC<ToastProps> = ({message}) => {
         return () => {
             clearTimeout(timer);
         }
-    }, [removeToast, title]);
+    }, [removeToast, message.id]);
 
     return(
         <Container type={message.type} hasDescription={!!message.description}>

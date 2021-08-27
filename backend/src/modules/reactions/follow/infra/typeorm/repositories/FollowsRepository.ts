@@ -1,11 +1,14 @@
 import IFollowsRepository from "@modules/reactions/follow/repositories/IFollowsRepository";
 import { getRepository, Repository } from "typeorm";
 import Follow from "../entities/Follow";
+import { Friend } from '../../../dtos/IFriendDTO';
 
 interface Request{
     id_user_send: string;
     id_user_receive: string;
 }
+
+
 export default class FollowsRepository implements IFollowsRepository{
     private ormRepository: Repository<Follow>;
 
@@ -32,7 +35,7 @@ export default class FollowsRepository implements IFollowsRepository{
 
     public async listByUserIdSend(id_user_send: string): Promise<Follow[]>{
 
-        const follows = await this.ormRepository.find({ where: { id_user_send }});
+        const follows = await this.ormRepository.find({ where: { id_user_send }, relations: ['user_receive'], select: ['id', 'created_at', 'state']});
 
         return follows;
 
@@ -40,7 +43,7 @@ export default class FollowsRepository implements IFollowsRepository{
 
     public async listByUserIdReceive(id_user_receive: string): Promise<Follow[]>{
 
-        const follows = await this.ormRepository.find({ where: { id_user_receive }});
+        const follows = await this.ormRepository.find({ where: { id_user_receive }, relations: ['user_send'], select: ['id', 'created_at', 'state']});
 
         return follows;
 
@@ -51,5 +54,35 @@ export default class FollowsRepository implements IFollowsRepository{
         const response = this.ormRepository.delete(id);
         
         return { message: response};
+    }
+
+    public async listFriendsByUser(id: string): Promise<Friend[]>{
+        const friends: Friend[] = [];
+        const followsSended = await this.ormRepository.find({where: { id_user_send: id}, relations: ['user_receive'], select: [ 'id','user_receive',]})
+
+        for(var i = 0; i < followsSended.length; i++){
+            friends.push(
+                {
+                    name: followsSended[i].user_receive.name,
+                    id_user: followsSended[i].user_receive.id,
+                    avatar: followsSended[i].user_receive.avatar,
+                    username: followsSended[i].user_receive.username,
+                }
+            )
+        }
+        
+        const followsReceived = await this.ormRepository.find({where: { id_user_receive: id}, relations: ['user_send'], select: ['id', 'user_send']})
+
+        for(var i = 0; i < followsReceived.length; i++){
+            friends.push(
+                {
+                    name: followsReceived[i].user_send.name,
+                    id_user: followsReceived[i].user_send.id,
+                    avatar: followsReceived[i].user_send.avatar,
+                    username: followsReceived[i].user_send.username
+                }
+            )
+        }
+        return friends;
     }
 }

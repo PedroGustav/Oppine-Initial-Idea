@@ -20,7 +20,6 @@ export default class AuthenticadedUserService{
         const user = await this.usersRepository.findByEmail(email);
 
 
-
         if(!user){
             throw new AppError('Incorrect email/password combination.', 401);
         }
@@ -32,7 +31,6 @@ export default class AuthenticadedUserService{
             throw new AppError('Incorrect email/password combination.', 401);
     
         }
-
         const { secret, expiresIn } = authConfig.jwt;
 
         const token = sign({}, secret, {
@@ -40,9 +38,9 @@ export default class AuthenticadedUserService{
             expiresIn,
         });
 
-        return{
+        return {
             user,
-            token,
-        };
+            token
+        }
     }
 }

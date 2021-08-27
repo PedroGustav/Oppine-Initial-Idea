@@ -6,6 +6,7 @@ import Routes from '@shared/infra/http/routes';
 
 import 'reflect-metadata';
 import '@shared/infra/typeorm';
+import upload from '@config/upload';
 
 
 
@@ -13,6 +14,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use('/files', express.static(upload.directory));
 app.use(Routes);
 
 

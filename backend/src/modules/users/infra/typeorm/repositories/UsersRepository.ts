@@ -34,7 +34,7 @@ export default class UsersRepository implements IUsersRepository{
 
     public async findByEmail(email: string): Promise<User | undefined>{
 
-        const findByEmail = await this.ormRepository.findOne({ where: { email }, select: ['id','name','email', 'password']});
+        const findByEmail = await this.ormRepository.findOne({ where: { email }, select: ['id', 'password', 'created_at', 'avatar', 'name', 'username','email']});
         
         return findByEmail;
     }

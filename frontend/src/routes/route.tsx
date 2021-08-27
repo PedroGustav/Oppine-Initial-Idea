@@ -17,6 +17,7 @@ export const Route:React.FC<RouteProps> = ({component: Component, isPrivate = fa
         <ReactDOMRoute
             {...rest}
             render={() => {
+               
                 return isPrivate === !!user ? (
                     <Component/>
                 ) : (

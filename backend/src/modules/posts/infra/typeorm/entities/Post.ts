@@ -7,7 +7,7 @@ class Post{
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @ManyToOne(() => User)
+    @ManyToOne(() => User, { eager: true})
     @JoinColumn({ name: 'id_user'})
     user: User;
     

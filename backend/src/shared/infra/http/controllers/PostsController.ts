@@ -22,13 +22,12 @@ export default class PostsControllers{
     }
 
 
-     public async index(request: Request, response: Response): Promise<Response>{
-
+    public async index(request: Request, response: Response): Promise<Response>{
+          
         const id_user = request.user.id;
 
         const postsRepository = new PostsRepository();
         const createFeed = new CreateFeedService(postsRepository);
-
         const feed = await createFeed.execute(id_user);
 
         return response.json(feed);

@@ -5,7 +5,7 @@ export default class ListUserPublicationsService{
 
     async execute(id_user: string){
 
-        const myPosts = await this.postService.listById(id_user);
+        const myPosts = await this.postService.listByUserId(id_user);
 
         return myPosts;
     }

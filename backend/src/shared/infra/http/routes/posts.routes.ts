@@ -15,10 +15,9 @@ const upload = multer(uploadConfig);
 //-------------------------------Criando uma nova postagem-------------------------------//
 postsRoutes.post('/', ensureAuthenticated, upload.single('image'), postsController.create);
 
-
-//---------------------Listando postagens por usuário----------------------//
-postsRoutes.get('/', ensureAuthenticated, userPublicationsController.index);
-
-
 //---------------------Criando feed de publicações------------------//
 postsRoutes.get('/feed', ensureAuthenticated, postsController.index);
+
+//---------------------Listando postagens por usuário----------------------//
+postsRoutes.get('/:id', ensureAuthenticated, userPublicationsController.index);
+

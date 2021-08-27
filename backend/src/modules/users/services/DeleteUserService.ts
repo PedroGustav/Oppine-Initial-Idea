@@ -11,7 +11,6 @@ export default class DeleteUserService{
     constructor(private usersRepository: IUsersRepository){}
     async execute({id_user}: RequestData){
 
-
         const checkUserExists = await this.usersRepository.findById(id_user);
 
         if(!checkUserExists){

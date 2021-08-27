@@ -10,16 +10,18 @@ export default class PostsRepository implements IPostsRepository{
         this.ormRepository = getRepository(Post);
     }
 
-    public async create({id_user, description, image}: ICreatePostDTO): Promise<Post>{
+    public async create({id_user, description, image}: ICreatePostDTO): Promise<Post | undefined>{
 
-        const post = this.ormRepository.create({
+        const newPost = this.ormRepository.create({
             description,
             id_user,
             image
         })
 
-        await this.ormRepository.save(post);
+        await this.ormRepository.save(newPost);
 
+        const post = await this.ormRepository.findOne({where: { id: newPost.id }, relations: ['user']});
+    
         return post;
     }
 
@@ -30,7 +32,7 @@ export default class PostsRepository implements IPostsRepository{
 
     public async listByUserId(id_user: string): Promise<Post[]>{
 
-        const posts = await this.ormRepository.find({where: { id_user}, select: ['id','id_user','description', 'image', 'created_at', 'updated_at']});
+        const posts = await this.ormRepository.find({where: { id_user}, relations: ['user'], select: ['id', 'description', 'image', 'created_at', 'updated_at']});
 
         return posts;
     }

@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import { useCallback, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import { Input } from '../../components/Input';
@@ -12,12 +12,25 @@ import { FormSection, Header, Main, ButtonSubmitDiv, LastDiv } from './styles';
 
 import LogoImg from '../../assets/Logo.svg';
 import People2Img from '../../assets/People2.svg';
+import api from '../../services/api';
+import { useToast } from '../../hooks/toast';
+import { useAuth } from '../../hooks/auth';
+
+interface RegisterData{
+    name: string;
+    email: string;
+    password: string;
+    password_confirmation: string;
+}
 
 export function RegisterPage(){
     const formRef = useRef<FormHandles>(null);
+    const { signIn } = useAuth();
+    const { addToast } = useToast();
+    const history = useHistory();
 
     
-     const handleSubmit = useCallback( async(data: object) => {
+    const handleSubmit = useCallback( async(data: RegisterData) => {
         
         formRef.current?.setErrors({});
         //Processo de validação de dados, utilizando yup.
@@ -39,14 +52,39 @@ export function RegisterPage(){
             await schema.validate(data, {
                 abortEarly: false
             });
+            
+            await api.post('/user', {
+                name: data.name,
+                email: data.email,
+                password: data.password
+            });
+
+            await signIn({
+                email: data.email,
+                password: data.password,
+            })
+            
+
+            history.push('/register-');
+
 
 
         }catch(err){
-
-            const errors = getValidationErrors(err);
-            formRef.current?.setErrors(errors);
+            if(err instanceof Yup.ValidationError){
+                const errors = getValidationErrors(err);
+                formRef.current?.setErrors(errors);
+            }
+            
+            else{
+                addToast({
+                    type: 'error',
+                    title: 'Problema no cadastro.',
+                    description: 'Aconteceu um problema ao se cadastrar, tente novamente.'
+                })
+            }
+            
         }
-    }, []);
+    }, [addToast, history, signIn]);
 
 
     return(
@@ -84,7 +122,7 @@ export function RegisterPage(){
                         <ButtonSubmitDiv>
                             <div>
                                 <input type="checkbox" id="accept" />
-                                <label htmlFor="accept">li e concordo com os <a>termos de uso.</a></label>
+                                <label htmlFor="accept">li e concordo com os <Link to={''}>termos de uso.</Link></label>
                             </div>
                             <Button type='submit'>Concluir</Button>
                         </ButtonSubmitDiv>

@@ -13,9 +13,10 @@ export interface ToastMessage{
     description?: string;
 }
 
- const ToastContext = createContext<ToastContextData>({} as ToastContextData);
+const ToastContext = createContext<ToastContextData>({} as ToastContextData);
 
 
+//Aqui onde ficam todas as funções disponíveis no contexto
 export const ToastProvider: React.FC = ({children}) => { 
     const [ messages, setMessages ] = useState<ToastMessage[]>([]);
 
@@ -34,7 +35,7 @@ export const ToastProvider: React.FC = ({children}) => {
     }, []);
 
     const removeToast = useCallback((id: string) => {
-        setMessages( state => state.filter(message => message.id != id));
+        setMessages( state => state.filter(message => message.id !== id));
     }, []);
     
     return(

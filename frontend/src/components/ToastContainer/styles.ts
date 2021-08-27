@@ -1,8 +1,9 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 
 
 export const Container = styled.div`
+    z-index: 1;
     position: absolute;
     overflow: hidden;
     top: 70px;

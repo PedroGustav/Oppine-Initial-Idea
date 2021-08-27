@@ -31,24 +31,28 @@ export default class CreateFollowService{
             throw new AppError('Não existe nenhum usuário com este username.', 404);
         }
 
+        if(checkUserSendExists.username === username){
+
+            throw new AppError('O usuário não pode fazer amizade com ele mesmo!', 401);
+
+        }
         
+        const followsSended = await this.followsRepository.listByUserIdSend(id_user_send);
 
-        const followsSend = await this.followsRepository.listByUserIdSend(id_user_send);
-
-        for(var i = 0; i < followsSend.length; i ++){
-            if (followsSend[i].id_user_receive == user.id){
-                throw new AppError('Essa Amizade já existe!')
-            } 
+        for(var i = 0; i < followsSended.length; i++){
+            if(followsSended[i].user_receive.id === user.id){
+                throw new AppError('Esta amizade já existe!', 401);
+            }
         }
 
-        const followsReceive = await this.followsRepository.listByUserIdReceive(id_user_send);
+        const followsReceived = await this.followsRepository.listByUserIdSend(user.id);
 
-        for(var i = 0; i < followsReceive.length; i ++){
-            if (followsReceive[i].id_user_send == user.id){
-                throw new AppError('Essa Amizade já existe!')
-            } 
+        for(var i = 0; i < followsReceived.length; i++){
+
+            if(followsReceived[i].user_receive.id === id_user_send){
+                throw new AppError('Esta amizade já existe!', 401);
+            }
         }
-
         const follow = await this.followsRepository.create({
             id_user_send,
             id_user_receive: user.id
