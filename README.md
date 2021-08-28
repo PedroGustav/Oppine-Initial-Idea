@@ -26,10 +26,35 @@
 
 
 
-<h3>Este projeto foi desenvolvido no intuito de treinar alguns conceitos utilizados no desenvolvimento web (front-end e back end) além de servir para agregar no porifólio.</h3>
+<p>Este projeto foi desenvolvido no intuito de treinar alguns conceitos utilizados no desenvolvimento web (front-end e back end) além de servir para agregar no porifólio.</p>
 
 </br>
 
+<h3>Alguns conceitos utilizados:</h3>
+
+
+</br>
+</br>
+
+<h3>Front end</h3>
+- <code> Styled components </code> para estilização e componentização </br>
+- Integração com api utilizando <code> axios. </code> </br>
+- Componentes funcionais e Hooks.</br>
+- Contexto.</br>
+- Rotas com <code> react-router-dom. </code> </br>
+- Validação de formulários com <code> yup. </code> </br>
+- Controle de formulários com o <code> unform. </code></br>
+
+</br>
+</br>
+</br>
+
+<h3>Back-end</h3>
+- Código dividido em <code> Controllers </code> , <code> Repositories </code> e  <code> Services. </code></br>
+- Autenticação com JWT.</br>
+- Upload de imagens com o <code> multer </code>.</br>
+- Middlewares.</br>
+</br>
 </br>
 
 # 🏁 Iniciando o projeto <a name = "getting_started"></a>
