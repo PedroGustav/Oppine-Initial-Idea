@@ -15,7 +15,6 @@
 # 📝 Índice de conteúdos
 
 - [Sobre o projeto](#about)
-- [Iniciando o projeto ](#getting_started)
 - [Ferramentas utilizadas](#built_using)
 - [Autores](#authors)
 
@@ -37,36 +36,24 @@
 </br>
 
 <h3>Front end</h3>
-- <code> Styled components </code> para estilização e componentização </br>
-- Integração com api utilizando <code> axios. </code> </br>
+- <code>Styled components</code> para estilização e componentização. </br>
+- Integração com api utilizando <code>axios.</code> </br>
 - Componentes funcionais e Hooks.</br>
 - Contexto.</br>
-- Rotas com <code> react-router-dom. </code> </br>
-- Validação de formulários com <code> yup. </code> </br>
-- Controle de formulários com o <code> unform. </code></br>
+- Rotas com <code>react-router-dom.</code> </br>
+- Validação de formulários com <code>yup.</code> </br>
+- Controle de formulários com o <code>unform.</code></br>
 
 </br>
 </br>
 </br>
 
 <h3>Back-end</h3>
-- Código dividido em <code> Controllers </code> , <code> Repositories </code> e  <code> Services. </code></br>
+- Código dividido em <code>Controllers</code>, <code>Repositories</code> e  <code>Services.</code></br>
 - Autenticação com JWT.</br>
-- Upload de imagens com o <code> multer </code>.</br>
+- Upload de imagens com o <code>multer</code>.</br>
 - Middlewares.</br>
 </br>
-</br>
-
-# 🏁 Iniciando o projeto <a name = "getting_started"></a>
-
-</br>
-
-Caso queira baixar o projeto em sua máquina e testá-lo, basta copiar o repositório localmente, em seguida, rode o seguinte comando:
-
-    npm start
-    ou
-    yarn
-
 </br>
 
 ## ⛏️  Ferramentas utilizadas <a name = "built_using"></a>
