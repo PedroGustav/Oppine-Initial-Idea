@@ -3,7 +3,7 @@
  <img width=200px height=200px src="./frontend/src/assets/Logo.svg" alt="Project logo"></a>
 </p>
 
-<h2 align="center">Uma rede social como qualquer outra só que minha :) </h2>
+<h2 align="center">Uma rede social como qualquer outra, só que minha :) </h2>
 <h3 align="center">🚧Em desenvolvimento🚧</h3>
 
 </div>
@@ -25,7 +25,7 @@
 
 
 
-<p>Este projeto foi desenvolvido no intuito de treinar alguns conceitos utilizados no desenvolvimento web (front-end e back end) além de servir para agregar no porifólio.</p>
+<p>Este projeto foi desenvolvido com o intuito de treinar alguns conceitos utilizados no desenvolvimento web (front-end e back end), além de servir para agregar no portfólio.</p>
 
 </br>
 
